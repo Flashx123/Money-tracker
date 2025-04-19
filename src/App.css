@@ -1,0 +1,152 @@
+/* app.css */
+
+body {
+  font-family: Libre Baskerville;
+  background-color: #040d15; /* Light gray background */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #eee;
+}
+
+
+
+
+main {
+  
+  background-color: #040334;
+  max-width: 400px; /* Slightly wider for better spacing */
+  width: 90%; /* Adjust width for smaller screens */
+  margin: 20px;
+  padding: 30px;
+  border-radius: 12px;
+  border-color: #8c1616;
+  
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+main h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+main h1 span {
+  color: #007bff; /* Accent color */
+  font-size: 1.2rem;
+}
+
+main form {
+  margin-bottom: 30px;
+}
+
+.inputs,
+.description {
+  margin-bottom: 15px;
+}
+
+.inputs input[type="text"],
+.inputs input[type="datetime-local"],
+.description input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.inputs input[type="text"]::placeholder,
+.inputs input[type="datetime-local"]::placeholder,
+.description input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+.inputs input[type="datetime-local"] {
+  /* Adjust styling for datetime-local if needed */
+  margin-top: 12px;
+}
+
+main button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 1s ease;
+}
+
+main button[type="submit"]:hover {
+  background-color: #06919c;
+}
+
+.transactions {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.transaction:last-child {
+  border-bottom: none;
+}
+
+.transaction .left .name {
+  font-weight: bold;
+  color: text-amber-50;
+  margin-bottom: 5px;
+}
+
+.transaction .left .description {
+  color: text-amber-50;
+  font-size: 0.9rem;
+}
+
+.transaction .right .price {
+  font-weight: bold;
+  color: #28a745; /* Green for positive/expense */
+  font-size: 1.1rem;
+  text-align: right;
+}
+
+
+
+.transaction .right .datetime {
+  font-weight: bold;
+  color: #0ee9fa; /* Green for positive/expense */
+  font-size: 1.1rem;
+  text-align: right;
+}
+
+
+/* You might want to add a class to differentiate income/expense for different colors */
+/* .transaction.income .right .price {
+  color: #28a745;
+}
+
+.transaction.expense .right .price {
+  color: #dc3545;
+} */
+
+
+
+
+
+.transaction .right .datetime {
+  color: #999;
+  font-size: 0.8rem;
+  text-align: right;
+}
