@@ -8,7 +8,7 @@ app.get('/api',(req,res)=>{
 
 
 app.post('/api/transaction',(req,res)=>{
-    
+    res.json(req.body);
 })
 
 

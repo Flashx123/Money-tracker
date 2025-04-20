@@ -1,7 +1,7 @@
 //import { Button } from "@/components/ui/button"
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { Ripple } from "@/components/magicui/ripple";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 import './App.css'
 
@@ -12,6 +12,24 @@ function App() {
   const [datetime,setdateTime] = useState('');
   const [desc,setdescription] = useState('');
 
+  const addNewTransaction = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const url = import.meta.env.REACT_APP_APIURL + '/transaction';
+    console.log(url);
+    fetch(url,{
+      method:'POST',
+      headers: {
+           'Content-Type': 'application/json',
+},
+     body : JSON.stringify({name,desc,datetime})
+    }).then(Response =>{
+      Response.json().then(json =>{
+        console.log('result',json);
+      });
+    });
+    // console.log(url);
+  };
+
   return (
     <>
 
@@ -21,11 +39,11 @@ function App() {
 
     
      <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl text-center mt-6">
-      Money<AuroraText>Tracker</AuroraText>
+      Money <AuroraText>Tracker</AuroraText>
     </h1>
       <main>
     <h1>$500 <span>.00</span></h1>
-    <form action="formMoney"> 
+    <form action="formMoney" onSubmit={addNewTransaction}> 
       {/* onSubmit={Addtransaction()}> */}
 
     <div className="inputs">
@@ -37,7 +55,7 @@ function App() {
     <div className="description">
       <input type="text" value={desc} onChange={ev=>setdescription(ev.target.value)} placeholder='Give the description you like'/>
     </div>
-    <button className='' type='submit'>Add transaction</button>
+    <button type='submit'>Add transaction</button>
     </form>
     
     <div className="transactions">

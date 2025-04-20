@@ -3,10 +3,12 @@ import react from '@vitejs/plugin-react'
 
 import path from "path"
 import tailwindcss from "@tailwindcss/vite"
+import envCompatible from "vite-plugin-env-compatible";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  envPrefix: "REACT_APP_",
+  plugins: [react(), tailwindcss(),envCompatible()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
