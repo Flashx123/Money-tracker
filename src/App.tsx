@@ -21,7 +21,7 @@ function App() {
       headers: {
            'Content-Type': 'application/json',
 },
-     body : JSON.stringify({name,desc,datetime})
+    body: JSON.stringify({ name, desc, datetime })
     }).then(Response =>{
       Response.json().then(json =>{
         console.log('result',json);
