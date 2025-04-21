@@ -2,6 +2,7 @@
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { Ripple } from "@/components/magicui/ripple";
 import { FormEvent, useState } from "react";
+//import { config } from "dotenv";
 
 import './App.css'
 
@@ -12,10 +13,12 @@ function App() {
   const [datetime,setdateTime] = useState('');
   const [desc,setdescription] = useState('');
 
+
   const addNewTransaction = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const url = import.meta.env.REACT_APP_APIURL + '/transaction';
     console.log(url);
+    
     fetch(url,{
       method:'POST',
       headers: {
