@@ -20,24 +20,34 @@ app.get('/api',(req,res)=>{
 
 // this is atlas
 
-app.post('/api/transaction',(req,res)=>{
+app.post('/api/transaction',async(req,res)=>{
 
     console.log(process.env.MONGO_URL);
-    const {name,desc,datetime} = req.body;
+    try {
+        await mongoose.connect(process.env.MONGO_URL);
+        const { name,price, desc, datetime } = req.body;
+        const transactionR = await TransactionModel.create({ name,price, desc, datetime });
+        console.log('Received success', req.body);
+        res.json(transactionR);
+    } catch (error) {
+        console.error('MongoDB Connection Error:', error);
+        res.status(500).json({ error: 'Failed to connect to MongoDB' });
+    }
+})
 
-    //mongoose.connect(process.env.REACT_APP_MONGO_URL);
+
+app.get('/api/getTransactions',async(req,res)=>{
+    await mongoose.connect(process.env.MONGO_URL);
+    const getTransactions = await TransactionModel.find();
+
+    res.json(getTransactions);
 
 
-
-
-
-    console.log('Recieved success' ,req.body);
-    res.json(req.body);
 })
 
 
 
 app.listen(3000 ,()=>{
-   console.log('server is choling')
+   console.log('server is choling');
 });
 

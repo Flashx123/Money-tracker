@@ -4,7 +4,8 @@ import { type } from "os";
 const transSchema = new Schema({
     
     name: {type:String, required:true},
-    description : {type : String,required: true},
+    price :{type: Number,required: true},
+    desc : {type : String,required: true},
     datetime : {type : Date , required : true}
 })
 
